@@ -42,7 +42,7 @@ body {
   color: var(--color-ink);
   background: var(--color-bg);
   -webkit-font-smoothing: antialiased;
-  padding-bottom: calc(5.25rem + env(safe-area-inset-bottom, 0px));
+  padding-bottom: calc(4.5rem + env(safe-area-inset-bottom, 0px));
 }
 
 body.nav-open {
@@ -131,6 +131,12 @@ a:hover {
   display: inline-flex;
   align-items: center;
   padding: 0.35rem 0.15rem;
+}
+
+/* Stay above fullscreen mobile nav (z-index 120) */
+.site-header .nav-toggle {
+  position: relative;
+  z-index: 135;
 }
 
 .nav-toggle {
@@ -645,23 +651,6 @@ body.nav-open .nav-toggle span:nth-child(3) {
   color: var(--color-accent);
 }
 
-.location__meta a.location__wa {
-  display: inline-flex;
-  vertical-align: middle;
-  align-items: center;
-  color: #25d366;
-  line-height: 0;
-}
-
-.location__meta a.location__wa:hover {
-  color: #20bd5a;
-}
-
-.location__wa-icon {
-  width: 1.35rem;
-  height: 1.35rem;
-}
-
 .link-maps {
   font-size: 0.9rem;
   font-weight: 500;
@@ -821,26 +810,25 @@ body.nav-open .nav-toggle span:nth-child(3) {
   }
 }
 
-/* Floating WhatsApp (always visible) */
+/* Floating WhatsApp — icon only, bottom corner, always on top */
 
 .whatsapp-fab {
   position: fixed;
   right: max(1rem, env(safe-area-inset-right, 0px));
   bottom: max(1rem, env(safe-area-inset-bottom, 0px));
-  z-index: 260;
+  z-index: 10000;
   display: inline-flex;
   align-items: center;
-  gap: 0.5rem;
-  padding: 0.65rem 1.15rem;
+  justify-content: center;
+  width: 3.5rem;
+  height: 3.5rem;
+  padding: 0;
   background: #25d366;
   color: #fff;
-  border-radius: 999px;
-  font-family: var(--font-sans);
-  font-size: 0.875rem;
-  font-weight: 600;
-  letter-spacing: 0.03em;
+  border-radius: 50%;
   box-shadow: 0 4px 18px rgba(0, 0, 0, 0.28);
   transition: background 0.2s var(--ease-out), transform 0.2s var(--ease-out), box-shadow 0.2s var(--ease-out);
+  pointer-events: auto;
 }
 
 .whatsapp-fab:hover {
@@ -856,7 +844,7 @@ body.nav-open .nav-toggle span:nth-child(3) {
 }
 
 .whatsapp-fab__icon {
-  width: 1.35rem;
-  height: 1.35rem;
+  width: 1.75rem;
+  height: 1.75rem;
   flex-shrink: 0;
 }
