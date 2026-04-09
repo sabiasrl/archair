@@ -26,8 +26,10 @@
           <img src="assets/logo.png" alt="ARCHAIR" width="120" height="44" class="brand__logo" />
         </a>
         <nav class="nav" aria-label="Principale">
+          <a class="nav__logo" href="#top" aria-label="ARCHAIR — Torna in cima">
+            <img src="assets/logo.png" alt="" width="120" height="44" decoding="async" />
+          </a>
           <a class="nav__link" href="#servizi">Servizi</a>
-          <a class="nav__link" href="#head-spa">Head Spa</a>
           <a class="nav__link" href="#gallery">Gallery</a>
           <a class="nav__link" href="#dove">Dove trovarci</a>
           <a class="nav__link" href="#contatti">Contatti</a>
@@ -65,7 +67,7 @@
       <section class="intro">
         <div class="container narrow">
           <p class="lead">
-            ARCHAIR e un Hair Studio &amp; Spa dedicato alla cura completa di capelli e cute:
+            ARCHAIR - Hair Studio &amp; Spa - è dedicato alla cura completa di capelli e cute:
             diagnosi professionale, tecniche avanzate e un'esperienza di benessere su misura.
           </p>
         </div>
@@ -88,13 +90,8 @@
               <p>Taglio, barba e grooming professionale per uno stile pulito, moderno e coerente.</p>
             </article>
           </div>
-        </div>
-      </section>
-
-      <section class="head-spa" id="head-spa">
-        <div class="container">
-          <div class="head-spa__card">
-            <h2 class="section-title">Head Spa</h2>
+          <div class="head-spa__card" id="head-spa">
+            <h3 class="section-title">Head Spa</h3>
             <p>
               Il nostro <strong>Head Spa</strong> e un rituale professionale dedicato a cute e
               capelli: detersione profonda, massaggio rilassante e trattamento specifico per
@@ -104,12 +101,17 @@
         </div>
       </section>
 
-      <section class="gallery" id="gallery">
-        <div class="container">
-          <h2 class="section-title center">I nostri lavori</h2>
-          <p class="section-sub center">Dettagli, texture, colore</p>
-        </div>
+      <section class="gallery" id="gallery" aria-label="Galleria">
         <div class="gallery__strip parallax-layer" data-parallax="0.15">
+          <figure class="gallery__item">
+            <img src="assets/saloon-1.jpg" alt="Interno salone ARCHAIR" loading="lazy" width="1200" height="800" />
+          </figure>
+          <figure class="gallery__item">
+            <img src="assets/saloon-2.jpg" alt="Salone ARCHAIR — ambiente" loading="lazy" width="1200" height="800" />
+          </figure>
+          <figure class="gallery__item">
+            <img src="assets/saloon-3.jpg" alt="Salone ARCHAIR — vista" loading="lazy" width="1200" height="800" />
+          </figure>
           <figure class="gallery__item">
             <img src="assets/hair-rainbow.png" alt="Colore e styling" loading="lazy" width="800" height="600" />
           </figure>
@@ -117,8 +119,21 @@
             <img src="assets/hair-blonde.png" alt="Taglio e tonalità" loading="lazy" width="800" height="600" />
           </figure>
           <figure class="gallery__item">
-            <img src="assets/shirts.png" alt="Atmosfera salone" loading="lazy" width="800" height="600" />
+            <img src="assets/saloon-shirts.png" alt="Salone ARCHAIR — dettaglio" loading="lazy" width="800" height="600" />
           </figure>
+          <figure class="gallery__item gallery__item--brand">
+            <img src="assets/logo.png" alt="ARCHAIR" loading="lazy" width="240" height="88" />
+          </figure>
+          <div class="gallery__item gallery__item--more">
+            <a
+              class="btn btn--outline gallery__more"
+              href="https://www.facebook.com/_archair_/photos"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Altre foto su Facebook"
+              >More</a
+            >
+          </div>
         </div>
       </section>
 
@@ -158,7 +173,6 @@
                 src="https://www.google.com/maps?cid=16757133592234518454&amp;hl=it&amp;output=embed"
                 allowfullscreen
               ></iframe>
-              <p class="map-note">Mappa interattiva — Via Francia 3, Pietragalla</p>
             </div>
           </div>
         </div>
@@ -174,16 +188,16 @@
             </li>
             <li>
               <span class="contact-list__label">PEC</span>
-              <a href="mailto:Michele.sileo@legalmail.it">Michele.sileo@legalmail.it</a>
+              <a href="mailto:Michele.sileo@legalmail.it">michele.sileo@legalmail.it</a>
             </li>
             <li>
               <span class="contact-list__label">Instagram</span>
               <a href="https://www.instagram.com/_archair_/" target="_blank" rel="noopener noreferrer">@_archair_</a>
             </li>
-            <li>
+            <!-- <li>
               <span class="contact-list__label">Sito</span>
               <a href="https://archiarstudio.it" rel="noopener noreferrer">archiarstudio.it</a>
-            </li>
+            </li> -->
           </ul>
         </div>
       </section>
@@ -205,8 +219,7 @@
         </div>
         <div class="footer__col footer__col--legal">
           <p class="footer__small">
-            Sede: Via Francia 3, 85016 Pietragalla (PZ), Italia<br />
-            Iscrizione: 20/02/2024
+            Sede: Via Francia 3, 85016 Pietragalla (PZ), Italia
           </p>
           <p class="footer__small">Titolare: Michele Sileo · C.F. SLIMHL96P28G942N</p>
         </div>

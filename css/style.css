@@ -13,8 +13,8 @@
   --font-brand: "Orbitron", "Eurostile Extended", "Eurostile", "Bank Gothic", system-ui, sans-serif;
   --font-sans: "Outfit", system-ui, sans-serif;
   --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
-  /* Approx. offset for fixed bar (tall logo) */
-  --header-h: clamp(5.25rem, 14vw, 8rem);
+  /* Matches .site-header: border + inner padding + .brand__logo height */
+  --header-h: calc(1px + 1.3rem + clamp(3.25rem, 12vw, 6rem));
 }
 
 *,
@@ -25,6 +25,7 @@
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: var(--header-h);
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -111,6 +112,14 @@ a:hover {
   max-width: min(92vw, 420px);
   object-fit: contain;
   object-position: left center;
+  opacity: inherit;
+}
+
+/* Raster logos follow parent opacity (header link, overlay nav, gallery cell, footer link) */
+.nav__logo img,
+.gallery__item--brand img,
+.footer__logo {
+  opacity: inherit;
 }
 
 .nav {
@@ -135,6 +144,19 @@ a:hover {
   display: inline-flex;
   align-items: center;
   padding: 0.35rem 0.15rem;
+}
+
+.nav__logo {
+  display: none;
+  line-height: 0;
+}
+
+.nav__logo img {
+  display: block;
+  height: clamp(144px, 42vw, 228px);
+  width: auto;
+  max-width: min(92vw, 840px);
+  object-fit: contain;
 }
 
 /* Stay above fullscreen mobile nav (z-index 120) */
@@ -203,6 +225,14 @@ body.nav-open .nav-toggle span:nth-child(3) {
     transform: translateY(0);
     opacity: 1;
     pointer-events: auto;
+  }
+
+  .nav__logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0.5rem 0 1rem;
+    order: -1;
   }
 
   .nav__link {
@@ -495,21 +525,14 @@ body.nav-open .nav-toggle span:nth-child(3) {
   }
 }
 
-/* Head Spa */
-
-.head-spa {
-  padding: 4rem 0 5rem;
-  background: linear-gradient(180deg, var(--color-bg) 0%, #f0ebe3 100%);
-}
+/* Head Spa (card inside Servizi) */
 
 .head-spa__card {
-  max-width: 640px;
-  margin: 0 auto;
-  padding: 2.5rem 2rem;
-  background: #fff;
+  margin-top: 2.5rem;
+  padding: 2rem 1.75rem;
+  background: #faf9f7;
   border: 1px solid var(--color-line);
-  box-shadow: 0 24px 48px rgba(28, 27, 25, 0.06);
-  text-align: center;
+  box-shadow: 0 20px 40px rgba(28, 27, 25, 0.07);
 }
 
 .head-spa__badge {
@@ -524,6 +547,7 @@ body.nav-open .nav-toggle span:nth-child(3) {
 
 .head-spa__card .section-title {
   margin-bottom: 1rem;
+  font-size: clamp(1.5rem, 3vw, 2.25rem);
 }
 
 .head-spa__card p {
@@ -538,15 +562,17 @@ body.nav-open .nav-toggle span:nth-child(3) {
   overflow: hidden;
 }
 
-.gallery .container {
-  margin-bottom: 2rem;
-}
-
 .gallery__strip {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 0;
   will-change: transform;
+}
+
+@media (max-width: 900px) {
+  .gallery__strip {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
 .gallery__item {
@@ -566,14 +592,37 @@ body.nav-open .nav-toggle span:nth-child(3) {
   transform: scale(1.04);
 }
 
-@media (max-width: 768px) {
-  .gallery__strip {
-    grid-template-columns: 1fr;
-  }
+.gallery__item--brand {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #ebe8e4;
+}
 
-  .gallery__item {
-    aspect-ratio: 16 / 10;
-  }
+.gallery__item--brand img {
+  width: auto;
+  height: auto;
+  max-width: 78%;
+  max-height: 52%;
+  object-fit: contain;
+}
+
+.gallery__item--more {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.25rem;
+  background: rgba(20, 20, 20, 0.05);
+  border: 1px solid var(--color-line);
+  box-sizing: border-box;
+}
+
+.gallery__item--more:hover {
+  background: rgba(20, 20, 20, 0.08);
+}
+
+.gallery__more {
+  text-align: center;
 }
 
 /* Parallax CTA band */
