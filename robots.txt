@@ -1,0 +1,5 @@
+# https://archairstudio.it/
+User-agent: *
+Allow: /
+
+Sitemap: https://archairstudio.it/sitemap.xml

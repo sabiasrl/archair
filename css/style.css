@@ -1021,6 +1021,11 @@ body.lightbox-open {
   margin-top: 4rem;
 }
 
+.parallax-cta--servizi-footer {
+  margin-top: clamp(2.75rem, 6vw, 5.5rem);
+  margin-bottom: clamp(2.75rem, 6vw, 5.5rem);
+}
+
 .parallax-cta__bg {
   position: absolute;
   inset: -15% -5%;
