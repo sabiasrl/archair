@@ -1345,7 +1345,7 @@ body.lightbox-open {
   }
 }
 
-/* Floating WhatsApp — icon only, bottom corner, always on top */
+/* Floating WhatsApp — bottom right, icon only */
 
 .whatsapp-fab {
   position: fixed;
@@ -1361,6 +1361,7 @@ body.lightbox-open {
   background: #25d366;
   color: #fff;
   border-radius: 50%;
+  text-decoration: none;
   box-shadow: 0 4px 18px rgba(0, 0, 0, 0.28);
   transition: background 0.2s var(--ease-out), transform 0.2s var(--ease-out), box-shadow 0.2s var(--ease-out);
   pointer-events: auto;
