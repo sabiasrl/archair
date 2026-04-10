@@ -1176,14 +1176,17 @@ body.lightbox-open {
   height: 2.25rem;
   color: #128c7e;
   border-radius: 50%;
-  background: rgba(18, 140, 126, 0.1);
-  transition: background 0.2s var(--ease-out), color 0.2s var(--ease-out), transform 0.2s var(--ease-out);
+  background: transparent;
+  box-shadow: none;
+  filter: none;
+  -webkit-tap-highlight-color: transparent;
+  transition: color 0.2s var(--ease-out), opacity 0.2s var(--ease-out);
 }
 
 .contact-list__whatsapp:hover {
   color: #0d6e62;
-  background: rgba(18, 140, 126, 0.18);
-  transform: scale(1.05);
+  background: transparent;
+  opacity: 0.9;
 }
 
 .contact-list__whatsapp-icon {
