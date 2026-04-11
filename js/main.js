@@ -203,8 +203,6 @@
       var inner = el.querySelector(".hero__bg, .split__img, .split__img-split, .parallax-cta__bg");
       if (inner) {
         inner.style.transform = "translate3d(0, " + shift.toFixed(2) + "px, 0)";
-      } else if (el.classList.contains("gallery__strip")) {
-        el.style.transform = "translate3d(0, " + (shift * 0.5).toFixed(2) + "px, 0)";
       }
     });
     ticking = false;
