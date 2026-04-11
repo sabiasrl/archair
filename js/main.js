@@ -47,138 +47,34 @@
     });
   });
 
-  (function initLightbox() {
+  (function initGalleryMasonry() {
     var strip = document.querySelector("#gallery .gallery__strip");
-    var lightbox = document.getElementById("lightbox");
-    if (!strip || !lightbox) return;
+    if (!strip || typeof Masonry === "undefined" || typeof imagesLoaded === "undefined") return;
 
-    var imgs = Array.prototype.slice.call(
-      strip.querySelectorAll("figure.gallery__item > img")
+    var msnry = new Masonry(strip, {
+      itemSelector: ".gallery__item",
+      columnWidth: ".gallery__sizer",
+      percentPosition: true,
+      gutter: 0,
+      horizontalOrder: true,
+      transitionDuration: 0,
+    });
+
+    imagesLoaded(strip, function () {
+      msnry.layout();
+    });
+
+    var resizeTimer;
+    window.addEventListener(
+      "resize",
+      function () {
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(function () {
+          msnry.layout();
+        }, 150);
+      },
+      { passive: true }
     );
-    if (!imgs.length) return;
-
-    var imgEl = lightbox.querySelector(".lightbox__img");
-    var closeBtn = lightbox.querySelector(".lightbox__close");
-    var prevBtn = lightbox.querySelector(".lightbox__nav--prev");
-    var nextBtn = lightbox.querySelector(".lightbox__nav--next");
-    var counter = lightbox.querySelector(".lightbox__counter");
-    var stage = lightbox.querySelector(".lightbox__stage");
-
-    var index = 0;
-    var touchStartX = null;
-    var lastFocus = null;
-
-    function updateImage() {
-      var item = imgs[index];
-      if (!item || !imgEl || !counter) return;
-      imgEl.src = item.currentSrc || item.src;
-      imgEl.alt = item.alt || "";
-      counter.textContent = index + 1 + " / " + imgs.length;
-    }
-
-    function openAt(i) {
-      index = ((i % imgs.length) + imgs.length) % imgs.length;
-      lastFocus = document.activeElement;
-      updateImage();
-      lightbox.hidden = false;
-      document.body.classList.add("lightbox-open");
-      if (closeBtn) closeBtn.focus();
-    }
-
-    function close() {
-      lightbox.hidden = true;
-      document.body.classList.remove("lightbox-open");
-      if (imgEl) imgEl.removeAttribute("src");
-      if (lastFocus && typeof lastFocus.focus === "function") {
-        try {
-          lastFocus.focus();
-        } catch (e) {
-          /* ignore */
-        }
-      }
-    }
-
-    function showNext() {
-      index = (index + 1) % imgs.length;
-      updateImage();
-    }
-
-    function showPrev() {
-      index = (index - 1 + imgs.length) % imgs.length;
-      updateImage();
-    }
-
-    imgs.forEach(function (img, i) {
-      var fig = img.closest("figure");
-      if (!fig) return;
-      fig.classList.add("gallery__item--lightbox");
-      fig.setAttribute("role", "button");
-      fig.setAttribute("tabindex", "0");
-      var label = img.alt ? "Apri immagine: " + img.alt : "Apri immagine a schermo intero";
-      fig.setAttribute("aria-label", label);
-      fig.addEventListener("click", function () {
-        openAt(i);
-      });
-      fig.addEventListener("keydown", function (e) {
-        if (e.key === "Enter" || e.key === " ") {
-          e.preventDefault();
-          openAt(i);
-        }
-      });
-    });
-
-    if (closeBtn) closeBtn.addEventListener("click", close);
-    if (prevBtn) prevBtn.addEventListener("click", showPrev);
-    if (nextBtn) nextBtn.addEventListener("click", showNext);
-
-    lightbox.addEventListener("click", function (e) {
-      if (e.target === lightbox) close();
-    });
-
-    if (stage) {
-      stage.addEventListener("click", function (e) {
-        if (e.target === stage) close();
-      });
-
-      stage.addEventListener(
-        "touchstart",
-        function (e) {
-          touchStartX = e.changedTouches[0].clientX;
-        },
-        { passive: true }
-      );
-
-      stage.addEventListener(
-        "touchend",
-        function (e) {
-          if (touchStartX === null) return;
-          var dx = e.changedTouches[0].clientX - touchStartX;
-          touchStartX = null;
-          if (Math.abs(dx) < 48) return;
-          if (dx > 0) showPrev();
-          else showNext();
-        },
-        { passive: true }
-      );
-
-      stage.addEventListener("touchcancel", function () {
-        touchStartX = null;
-      });
-    }
-
-    window.addEventListener("keydown", function (e) {
-      if (lightbox.hidden) return;
-      if (e.key === "Escape") {
-        e.preventDefault();
-        close();
-      } else if (e.key === "ArrowRight") {
-        e.preventDefault();
-        showNext();
-      } else if (e.key === "ArrowLeft") {
-        e.preventDefault();
-        showPrev();
-      }
-    });
   })();
 
   var prefersReduced =

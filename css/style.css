@@ -339,11 +339,19 @@ body.nav-open .nav-toggle span:nth-child(3) {
   position: absolute;
   inset: -8% -5% -12%;
   z-index: 0;
-  background-image: url("../assets/saloon-2.png");
-  background-size: cover;
-  background-position: center center;
+  overflow: hidden;
   will-change: transform;
   transform: translateZ(0);
+  pointer-events: none;
+}
+
+.hero__bg-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
 }
 
 .hero__content {
@@ -796,44 +804,57 @@ body.nav-open .nav-toggle span:nth-child(3) {
   color: var(--color-ink-muted);
 }
 
-/* Gallery */
+/* Gallery — Masonry: natural image proportions (width = column; height auto), fills strip */
 
 .gallery {
   padding: 0;
   overflow: hidden;
+  background: #000;
 }
 
 .gallery__strip {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 0;
+  width: 100%;
+  background: #000;
+}
+
+.gallery__sizer {
+  width: 33.333%;
 }
 
 @media (max-width: 900px) {
-  .gallery__strip {
-    grid-template-columns: repeat(2, 1fr);
+  .gallery__sizer {
+    width: 50%;
   }
 }
 
 .gallery__item {
   margin: 0;
-  aspect-ratio: 4 / 3;
-  overflow: hidden;
+  padding: 0;
+  width: 33.333%;
+  box-sizing: border-box;
+  background: #000;
+}
+
+@media (max-width: 900px) {
+  .gallery__item {
+    width: 50%;
+  }
 }
 
 .gallery__item img {
+  display: block;
   width: 100%;
-  height: 100%;
-  object-fit: cover;
+  max-width: 100%;
+  height: auto;
 }
 
 .gallery__item--more {
   display: flex;
   align-items: center;
   justify-content: center;
+  min-height: 8rem;
   padding: 1.25rem;
-  background: #0d0d0d;
-  border: 1px solid rgba(255, 255, 255, 0.06);
+  background: #000;
   box-sizing: border-box;
 }
 
@@ -841,147 +862,11 @@ body.nav-open .nav-toggle span:nth-child(3) {
   background: #141414;
 }
 
-figure.gallery__item.gallery__item--lightbox {
-  cursor: zoom-in;
-}
-
-/* Lightbox */
-
-.lightbox {
-  position: fixed;
-  inset: 0;
-  z-index: 11000;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: env(safe-area-inset-top, 0) env(safe-area-inset-right, 0) env(safe-area-inset-bottom, 0)
-    env(safe-area-inset-left, 0);
-  background: rgba(10, 10, 10, 0.94);
-  touch-action: manipulation;
-  overscroll-behavior: contain;
-}
-
-.lightbox[hidden] {
-  display: none !important;
-}
-
-body.lightbox-open {
-  overflow: hidden;
-}
-
-.lightbox__close {
-  position: absolute;
-  top: max(0.5rem, env(safe-area-inset-top));
-  right: max(0.5rem, env(safe-area-inset-right));
-  z-index: 2;
-  width: 2.75rem;
-  height: 2.75rem;
-  padding: 0;
-  border: none;
+.gallery__more {
   border-radius: 0;
-  background: transparent;
-  color: rgba(245, 242, 236, 0.88);
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  appearance: none;
-  -webkit-appearance: none;
-  -webkit-tap-highlight-color: transparent;
-  transition: color 0.2s var(--ease-out);
-}
-
-.lightbox__close:hover {
-  color: #f5f2ec;
-}
-
-.lightbox__close:focus {
-  outline: none;
-}
-
-.lightbox__close:focus-visible {
-  color: #f5f2ec;
-  outline: 2px solid rgba(245, 242, 236, 0.45);
-  outline-offset: 6px;
-}
-
-.lightbox__close-icon {
-  width: 1.35rem;
-  height: 1.35rem;
-  display: block;
-}
-
-.lightbox__nav {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  z-index: 2;
-  width: 2.5rem;
-  height: 3.5rem;
-  border: none;
-  background: rgba(255, 255, 255, 0.1);
-  color: #f5f2ec;
-  font-size: 1.75rem;
+  padding: 0.85rem 1.4rem;
   line-height: 1;
-  cursor: pointer;
-  display: none;
-  align-items: center;
-  justify-content: center;
-  transition: background 0.2s var(--ease-out);
-}
-
-.lightbox__nav:hover {
-  background: rgba(255, 255, 255, 0.2);
-}
-
-.lightbox__nav--prev {
-  left: max(0.5rem, env(safe-area-inset-left));
-  border-radius: 0 0.25rem 0.25rem 0;
-}
-
-.lightbox__nav--next {
-  right: max(0.5rem, env(safe-area-inset-right));
-  border-radius: 0.25rem 0 0 0.25rem;
-}
-
-@media (min-width: 768px) {
-  .lightbox__nav {
-    display: flex;
-  }
-}
-
-.lightbox__stage {
-  flex: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 0;
-  width: 100%;
-  max-height: calc(100vh - 5rem);
-  max-height: calc(100dvh - 5rem);
-  padding: 3.25rem 0.75rem 0.5rem;
-  box-sizing: border-box;
-}
-
-.lightbox__img {
-  max-width: 100%;
-  max-height: 100%;
-  width: auto;
-  height: auto;
-  object-fit: contain;
-  user-select: none;
-  -webkit-user-drag: none;
-}
-
-.lightbox__counter {
-  margin: 0;
-  padding: 0.5rem 1rem 1rem;
-  font-family: var(--font-sans);
-  font-size: 0.8rem;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: rgba(245, 242, 236, 0.55);
+  flex-shrink: 0;
 }
 
 /* Parallax CTA band */
@@ -1408,7 +1293,7 @@ body.lightbox-open {
   }
 }
 
-/* Floating WhatsApp — bottom right, icon only */
+/* Floating WhatsApp — bottom right, icon + Prenotazioni */
 
 .whatsapp-fab {
   position: fixed;
@@ -1418,12 +1303,12 @@ body.lightbox-open {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 3.85rem;
-  height: 3.85rem;
-  padding: 0;
+  gap: 0.5rem;
+  min-height: 3.15rem;
+  padding: 0.6rem 1rem 0.6rem 0.8rem;
   background: #25d366;
   color: #fff;
-  border-radius: 50%;
+  border-radius: 9999px;
   text-decoration: none;
   box-shadow: 0 4px 18px rgba(0, 0, 0, 0.28);
   transition: background 0.2s var(--ease-out), transform 0.2s var(--ease-out), box-shadow 0.2s var(--ease-out);
@@ -1443,7 +1328,17 @@ body.lightbox-open {
 }
 
 .whatsapp-fab__icon {
-  width: 1.95rem;
-  height: 1.95rem;
+  width: 1.6rem;
+  height: 1.6rem;
   flex-shrink: 0;
+}
+
+.whatsapp-fab__text {
+  font-family: var(--font-sans);
+  font-size: 0.875rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  line-height: 1;
+  white-space: nowrap;
 }
