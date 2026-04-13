@@ -1000,14 +1000,22 @@ body.nav-open .nav-toggle span:nth-child(3) {
   border-top: 1px solid var(--color-line);
 }
 
-.feedback__name {
-  display: block;
+.feedback__link {
   font-family: var(--font-sans);
-  font-size: 0.9rem;
+  font-size: 0.95rem;
   font-weight: 600;
   font-style: normal;
   letter-spacing: 0.04em;
+  text-decoration: none;
   color: var(--color-ink);
+  border-bottom: 1px solid var(--color-line);
+  padding-bottom: 0.1rem;
+  transition: color 0.2s var(--ease-out), border-color 0.2s var(--ease-out);
+}
+
+.feedback__link:hover {
+  color: var(--color-accent);
+  border-bottom-color: var(--color-accent);
 }
 
 .feedback__quote p {
