@@ -386,7 +386,19 @@
 
       <section class="contact" id="contatti">
         <div class="container narrow">
-          <h2 class="section-title">Contatti</h2>
+          <h2 class="section-title section-title--with-vcard">
+            <a
+              class="section-title__vcard"
+              href="assets/contact.vcf"
+              download="contact.vcf"
+              type="text/vcard"
+              aria-label="Aggiungi contatto in rubrica"
+              title="Aggiungi in rubrica"
+            >
+              <img src="assets/contacts.png" alt="" width="34" height="34" loading="lazy" decoding="async" />
+            </a>
+            <span>Contatti</span>
+          </h2>
           <ul class="contact-list">
             <li>
               <span class="contact-list__label">Telefono</span>
@@ -475,5 +487,5 @@
     <script src="js/vendor/imagesloaded.pkgd.min.js" defer></script>
     <script src="js/vendor/masonry.pkgd.min.js" defer></script>
     <script src="js/main.js" defer></script>
-  </body>
+</body>
 </html>
