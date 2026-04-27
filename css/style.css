@@ -383,14 +383,16 @@ body.nav-open .nav-toggle span:nth-child(3) {
 
 .eyebrow {
   font-family: var(--font-sans);
-  font-size: clamp(0.78rem, 1.85vw, 0.875rem);
+  font-size: clamp(0.95rem, 2.35vw, 1.12rem);
   font-weight: 600;
   letter-spacing: 0.28em;
   text-transform: uppercase;
   color: #fff;
   opacity: 1;
   margin: 0 0 1rem;
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.9);
+  text-shadow:
+    0 3px 10px rgba(0, 0, 0, 0.78),
+    0 1px 3px rgba(0, 0, 0, 0.94);
   overflow-wrap: break-word;
   word-break: break-word;
 }
@@ -404,7 +406,9 @@ body.nav-open .nav-toggle span:nth-child(3) {
   line-height: 1.05;
   margin: 0 auto 1rem;
   color: #fff;
-  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.95);
+  text-shadow:
+    0 4px 14px rgba(0, 0, 0, 0.76),
+    0 1px 4px rgba(0, 0, 0, 0.98);
   max-width: 100%;
   display: block;
   box-sizing: border-box;
@@ -436,7 +440,9 @@ body.nav-open .nav-toggle span:nth-child(3) {
   color: #fff;
   opacity: 1;
   margin: 0 0 1.5rem;
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.88);
+  text-shadow:
+    0 3px 10px rgba(0, 0, 0, 0.72),
+    0 1px 3px rgba(0, 0, 0, 0.92);
   overflow-wrap: break-word;
 }
 
@@ -452,7 +458,15 @@ body.nav-open .nav-toggle span:nth-child(3) {
   line-height: 1.5;
   color: rgba(255, 255, 255, 0.94);
   opacity: 1;
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.88);
+  text-shadow:
+    0 3px 10px rgba(0, 0, 0, 0.72),
+    0 1px 3px rgba(0, 0, 0, 0.92);
+}
+
+@media (max-width: 900px) {
+  .head-spa__card .section-title {
+    font-size: clamp(1.95rem, 6.8vw, 2.55rem);
+  }
 }
 
 .hero .btn--outline,
@@ -477,7 +491,7 @@ body.nav-open .nav-toggle span:nth-child(3) {
   width: 3.3rem;
   height: 3.3rem;
   padding: 0;
-  border-radius: 2px;
+  border-radius: 50%;
 }
 
 .hero__social-icon-btn svg {
