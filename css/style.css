@@ -473,6 +473,19 @@ body.nav-open .nav-toggle span:nth-child(3) {
   max-width: 100%;
 }
 
+.hero__social-icon-btn {
+  width: 3.3rem;
+  height: 3.3rem;
+  padding: 0;
+  border-radius: 2px;
+}
+
+.hero__social-icon-btn svg {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+
 .scroll-hint {
   position: absolute;
   bottom: 2rem;
@@ -939,17 +952,15 @@ body.nav-open .nav-toggle span:nth-child(3) {
 
 .gallery__more {
   border-radius: 0;
-  width: 100%;
-  min-height: clamp(180px, 22vw, 320px);
-  padding: 0.85rem 1rem;
+  width: auto;
+  min-height: 0;
+  padding: 0.85rem 1.4rem;
   line-height: 1;
   flex-shrink: 0;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   text-align: center;
-  border: 0;
-  border-color: transparent;
 }
 
 /* Parallax CTA band */
@@ -1081,6 +1092,10 @@ body.nav-open .nav-toggle span:nth-child(3) {
   margin-top: auto;
   padding-top: 1.1rem;
   border-top: 1px solid var(--color-line);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.35rem;
 }
 
 .feedback__link {
@@ -1110,6 +1125,44 @@ body.nav-open .nav-toggle span:nth-child(3) {
   letter-spacing: 0.01em;
   line-height: 1.58;
   color: var(--color-ink);
+  display: -webkit-box;
+  -webkit-line-clamp: 7;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.feedback__card--expanded .feedback__quote p {
+  display: block;
+  -webkit-line-clamp: unset;
+  -webkit-box-orient: unset;
+  overflow: visible;
+}
+
+.feedback__stars {
+  display: inline-flex;
+  margin: 0;
+  font-style: normal;
+  letter-spacing: 0.08em;
+  color: #d39b2f;
+}
+
+.feedback__expand {
+  display: inline;
+  margin-top: 0;
+  margin-left: 0.35rem;
+  color: var(--color-accent);
+  font-family: var(--font-sans);
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  text-transform: none;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(20, 20, 20, 0.28);
+  cursor: pointer;
+}
+
+.feedback__expand[hidden] {
+  display: none;
 }
 
 /* Location */

@@ -56,6 +56,28 @@
     });
   });
 
+  (function initFeedbackExpand() {
+    var cards = document.querySelectorAll(".feedback__card");
+    cards.forEach(function (card) {
+      var text = card.querySelector(".feedback__quote p");
+      var btn = card.querySelector(".feedback__expand");
+      if (!text || !btn) return;
+
+      // Hide expand button when content already fits in clamped area.
+      if (text.scrollHeight <= text.clientHeight + 1) {
+        btn.hidden = true;
+        return;
+      }
+
+      btn.addEventListener("click", function (event) {
+        event.preventDefault();
+        var expanded = card.classList.toggle("feedback__card--expanded");
+        btn.setAttribute("aria-expanded", expanded ? "true" : "false");
+        btn.textContent = expanded ? "riduci" : "espandi";
+      });
+    });
+  })();
+
   var prefersReduced =
     typeof window.matchMedia === "function" &&
     window.matchMedia("(prefers-reduced-motion: reduce)").matches;
