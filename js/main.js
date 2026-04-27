@@ -47,35 +47,14 @@
     });
   });
 
-  (function initGalleryMasonry() {
-    var strip = document.querySelector("#gallery .gallery__strip");
-    if (!strip || typeof Masonry === "undefined" || typeof imagesLoaded === "undefined") return;
-
-    var msnry = new Masonry(strip, {
-      itemSelector: ".gallery__item",
-      columnWidth: ".gallery__sizer",
-      percentPosition: true,
-      gutter: 0,
-      horizontalOrder: true,
-      transitionDuration: 0,
+  // Keep gallery images non-interactive: clicking should never open anything.
+  document.querySelectorAll("#gallery .gallery__item img").forEach(function (img) {
+    img.setAttribute("draggable", "false");
+    img.addEventListener("click", function (event) {
+      event.preventDefault();
+      event.stopPropagation();
     });
-
-    imagesLoaded(strip, function () {
-      msnry.layout();
-    });
-
-    var resizeTimer;
-    window.addEventListener(
-      "resize",
-      function () {
-        clearTimeout(resizeTimer);
-        resizeTimer = setTimeout(function () {
-          msnry.layout();
-        }, 150);
-      },
-      { passive: true }
-    );
-  })();
+  });
 
   var prefersReduced =
     typeof window.matchMedia === "function" &&

@@ -592,6 +592,8 @@ body.nav-open .nav-toggle span:nth-child(3) {
   background-size: cover;
   background-repeat: no-repeat;
   background-color: #141414;
+  opacity: 1;
+  filter: saturate(1.45) contrast(1.28) brightness(0.92);
   backface-visibility: hidden;
 }
 
@@ -830,40 +832,63 @@ body.nav-open .nav-toggle span:nth-child(3) {
   color: var(--color-ink-muted);
 }
 
-/* Gallery — Masonry: natural image proportions (width = column; height auto), fills strip */
+/* Gallery — modern feed with filters + lightbox */
 
 .gallery {
-  padding: 0;
+  padding: 1.5rem 0 0;
   overflow: hidden;
   background: #000;
+}
+
+.gallery__head {
+  width: min(1120px, 92vw);
+  margin: 0 auto 1rem;
+}
+
+.gallery__head .section-title {
+  color: #fff;
+  margin-bottom: 0.25rem;
 }
 
 .gallery__strip {
   width: 100%;
   background: #000;
+  column-count: 3;
+  column-gap: 0;
 }
 
 .gallery__sizer {
-  width: 33.333%;
+  display: none;
 }
 
 @media (max-width: 900px) {
-  .gallery__sizer {
-    width: 50%;
+  .gallery__strip {
+    column-count: 2;
   }
 }
 
 .gallery__item {
   margin: 0;
   padding: 0;
-  width: 33.333%;
+  width: 100%;
   box-sizing: border-box;
   background: #000;
+  border-radius: 0;
+  overflow: hidden;
+  border: 0;
+  position: relative;
+  cursor: default;
+  break-inside: avoid;
+  -webkit-column-break-inside: avoid;
+  page-break-inside: avoid;
+  display: inline-block;
+  vertical-align: top;
 }
 
 @media (max-width: 900px) {
   .gallery__item {
-    width: 50%;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: #050505;
   }
 }
 
@@ -872,16 +897,40 @@ body.nav-open .nav-toggle span:nth-child(3) {
   width: 100%;
   max-width: 100%;
   height: auto;
+  aspect-ratio: auto;
+  object-fit: cover;
+  transition: none;
+}
+
+.gallery__item figcaption {
+  display: none;
+}
+
+@media (max-width: 900px) {
+  .gallery {
+    padding-top: 1rem;
+  }
+
+  .gallery__head {
+    margin-bottom: 0.7rem;
+  }
+
+  .gallery__item figcaption {
+    opacity: 1;
+    font-size: 0.76rem;
+  }
 }
 
 .gallery__item--more {
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: 8rem;
-  padding: 1.25rem;
+  min-height: clamp(180px, 22vw, 320px);
+  padding: 0.75rem;
   background: #000;
   box-sizing: border-box;
+  cursor: default;
+  aspect-ratio: 1 / 1;
 }
 
 .gallery__item--more:hover {
@@ -890,9 +939,17 @@ body.nav-open .nav-toggle span:nth-child(3) {
 
 .gallery__more {
   border-radius: 0;
-  padding: 0.85rem 1.4rem;
+  width: 100%;
+  min-height: clamp(180px, 22vw, 320px);
+  padding: 0.85rem 1rem;
   line-height: 1;
   flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  border: 0;
+  border-color: transparent;
 }
 
 /* Parallax CTA band */
