@@ -209,62 +209,78 @@
       </section>
 
       <section id="servizi" class="servizi-section" aria-label="Servizi">
-        <div class="split parallax-band">
-        <div class="split__visual split__visual--diagonal parallax-layer" data-parallax="0.2">
-          <div class="split__img-split">
-            <div class="split__diagonal split__diagonal--top" aria-hidden="true"></div>
-            <div class="split__diagonal split__diagonal--bottom" aria-hidden="true"></div>
+        <div class="split servizi-split parallax-band">
+          <div class="split__visual split__visual--diagonal parallax-layer" data-parallax="0.2">
+            <div class="split__img-split">
+              <div class="split__diagonal split__diagonal--top" aria-hidden="true"></div>
+              <div class="split__diagonal split__diagonal--bottom" aria-hidden="true"></div>
+            </div>
           </div>
-        </div>
-        <div class="split__content split__content--servizi">
-          <p class="section-sub servizi__intro">
-            Consulenza su misura: dalla cute al look, con attenzione ai dettagli.
-          </p>
-          <div class="head-spa__card head-spa__card--section" id="head-spa">
-            <h3 class="section-title">Head Spa</h3>
-            <p>
-              L'Head Spa e un trattamento che unisce benessere e cura di cute e capelli.
-              Attraverso detersione profonda, massaggi e prodotti specifici, riequilibra il cuoio capelluto.
-              Migliora la salute e la luminosita dei capelli.
-              Un'esperienza rilassante che rigenera corpo e mente.
+          <div class="split__content split__content--servizi">
+            <p class="section-sub servizi__intro">
+              Consulenza su misura: dalla cute al look, con attenzione ai dettagli.
+            </p>
+            <div class="servizi-cards">
+              <article class="service-card servizi-card--donna">
+                <h3 class="section-title">Donna</h3>
+                <div class="service-columns">
+                  <div class="service-group">
+                    <h4 class="service-group__label">Servizi stilistici</h4>
+                    <ul class="service-list">
+                      <li>Taglio</li>
+                      <li>Piega</li>
+                      <li>Acconciatura</li>
+                    </ul>
+                  </div>
+                  <div class="service-group">
+                    <h4 class="service-group__label">Servizi tecnici</h4>
+                    <ul class="service-list">
+                      <li>Colore</li>
+                      <li>Tonalizzante</li>
+                      <li>Trattamenti</li>
+                      <li>Balayage</li>
+                      <li>Ombré</li>
+                    </ul>
+                  </div>
+                </div>
+              </article>
+              <article class="service-card servizi-card--uomo">
+                <h3 class="section-title">Uomo</h3>
+                <ul class="service-list service-list--solo">
+                  <li>Taglio</li>
+                  <li>Barba</li>
+                  <li>Panno caldo</li>
+                </ul>
+              </article>
+            </div>
+            <p class="section-sub servizi__sub-stack">
+              Servizi stilistici e tecnici per lei, taglio barba e dettagli per lui.
             </p>
           </div>
-          <p class="section-sub servizi__sub-stack">
-            Servizi stilistici e tecnici per lei, taglio barba e dettagli per lui.
-          </p>
-          <div class="service-grid">
-            <article class="service-card">
-              <h3 class="section-title">Donna</h3>
-              <div class="service-columns">
-                <div class="service-group">
-                  <h4 class="service-group__label">Servizi stilistici</h4>
-                  <ul class="service-list">
-                    <li>Taglio</li>
-                    <li>Piega</li>
-                    <li>Acconciatura</li>
-                  </ul>
-                </div>
-                <div class="service-group">
-                  <h4 class="service-group__label">Servizi tecnici</h4>
-                  <ul class="service-list">
-                    <li>Colore</li>
-                    <li>Tonalizzante</li>
-                    <li>Trattamenti</li>
-                    <li>Balayage · Ombré</li>
-                  </ul>
-                </div>
-              </div>
-            </article>
-            <article class="service-card">
-              <h3 class="section-title">Uomo</h3>
-              <ul class="service-list service-list--solo">
-                <li>Taglio</li>
-                <li>Barba</li>
-                <li>Panno caldo</li>
-              </ul>
-            </article>
-          </div>
         </div>
+
+        <div class="servizi-below">
+          <article class="service-card head-spa__card" id="head-spa">
+            <div class="head-spa__media">
+              <img
+                src="assets/head-spa.png"
+                alt="Head Spa — trattamento cute e capelli"
+                loading="lazy"
+                width="1200"
+                height="800"
+                decoding="async"
+              />
+            </div>
+            <div class="head-spa__copy">
+              <h3 class="section-title">Head Spa</h3>
+              <p class="head-spa__lead">
+                L'Head Spa e un trattamento che unisce benessere e cura di cute e capelli.
+                Attraverso detersione profonda, massaggi e prodotti specifici, riequilibra il cuoio capelluto.
+                Migliora la salute e la luminosita dei capelli.
+                Un'esperienza rilassante che rigenera corpo e mente.
+              </p>
+            </div>
+          </article>
         </div>
 
         <div
